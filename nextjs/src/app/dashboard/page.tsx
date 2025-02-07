@@ -46,7 +46,7 @@ export default function DashboardContent() {
                 <CardContent>
                     <div className="grid gap-4 md:grid-cols-2">
                         <Link
-                            href="/app/user-settings"
+                            href="/dashboard/user-settings"
                             className="flex items-center gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors"
                         >
                             <div className="p-2 bg-primary-50 rounded-full">
@@ -59,7 +59,7 @@ export default function DashboardContent() {
                         </Link>
 
                         <Link
-                            href="/app/example"
+                            href="/dashboard/example"
                             className="flex items-center gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors"
                         >
                             <div className="p-2 bg-primary-50 rounded-full">

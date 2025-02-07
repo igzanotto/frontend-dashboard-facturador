@@ -74,7 +74,11 @@ export default function SSOButtons({ onError }: SSOButtonsProps) {
                 provider,
                 options: {
                     redirectTo: `${window.location.origin}/api/auth/callback`,
-                },
+                    queryParams: {
+                        access_type: 'offline',
+                        prompt: 'consent'
+                    }
+                }
             });
 
             if (error) throw error;
