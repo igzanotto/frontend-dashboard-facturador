@@ -14,7 +14,7 @@ import {
 import { useGlobal } from "@/lib/context/GlobalContext";
 import { createSPASassClient } from "@/lib/supabase/client";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
     const pathname = usePathname();
@@ -32,7 +32,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         }
     };
     const handleChangePassword = async () => {
-        router.push('/app/user-settings')
+        router.push('/dashboard/user-settings')
     };
 
     const getInitials = (email: string) => {
@@ -45,10 +45,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     const productName = process.env.NEXT_PUBLIC_PRODUCTNAME;
 
     const navigation = [
-        { name: 'Homepage', href: '/app', icon: Home },
-        { name: 'Example Storage', href: '/app/storage', icon: Files },
-        { name: 'Example Table', href: '/app/table', icon: LucideListTodo },
-        { name: 'User Settings', href: '/app/user-settings', icon: User },
+        { name: 'Homepage', href: '/dashboard', icon: Home },
+        { name: 'Example Storage', href: '/dashboard/storage', icon: Files },
+        { name: 'Example Table', href: '/dashboard/table', icon: LucideListTodo },
+        { name: 'User Settings', href: '/dashboard/user-settings', icon: User },
     ];
 
     const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
