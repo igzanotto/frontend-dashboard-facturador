@@ -4,18 +4,16 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useGlobal } from '@/lib/context/GlobalContext';
 import { createSPASassClient } from '@/lib/supabase/client';
-import { Key, User, CheckCircle } from 'lucide-react';
+import { Key, User, CheckCircle, Phone, Mail, Calendar } from 'lucide-react';
 import { MFASetup } from '@/components/MFASetup';
 
 export default function UserSettingsPage() {
-    const { user } = useGlobal();
+    const { profile } = useGlobal();
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-
-
 
     const handlePasswordChange = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -54,8 +52,6 @@ export default function UserSettingsPage() {
         }
     };
 
-
-
     return (
         <div className="space-y-6 p-6">
             <div className="space-y-2">
@@ -89,13 +85,39 @@ export default function UserSettingsPage() {
                             <CardDescription>Your account information</CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            <div>
-                                <label className="text-sm font-medium text-gray-500">User ID</label>
-                                <p className="mt-1 text-sm">{user?.id}</p>
-                            </div>
-                            <div>
-                                <label className="text-sm font-medium text-gray-500">Email</label>
-                                <p className="mt-1 text-sm">{user?.email}</p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="text-sm font-medium text-gray-500">User ID</label>
+                                    <p className="mt-1 text-sm font-mono">{profile?.id}</p>
+                                </div>
+                                <div>
+                                    <label className="text-sm font-medium text-gray-500 flex items-center gap-2">
+                                        <Mail className="h-4 w-4" /> Email
+                                    </label>
+                                    <p className="mt-1 text-sm">{profile?.email}</p>
+                                </div>
+                                <div>
+                                    <label className="text-sm font-medium text-gray-500">First Name</label>
+                                    <p className="mt-1 text-sm">{profile?.first_name || '-'}</p>
+                                </div>
+                                <div>
+                                    <label className="text-sm font-medium text-gray-500">Last Name</label>
+                                    <p className="mt-1 text-sm">{profile?.last_name || '-'}</p>
+                                </div>
+                                <div>
+                                    <label className="text-sm font-medium text-gray-500 flex items-center gap-2">
+                                        <Phone className="h-4 w-4" /> Phone
+                                    </label>
+                                    <p className="mt-1 text-sm">{profile?.phone || '-'}</p>
+                                </div>
+                                <div>
+                                    <label className="text-sm font-medium text-gray-500 flex items-center gap-2">
+                                        <Calendar className="h-4 w-4" /> Member Since
+                                    </label>
+                                    <p className="mt-1 text-sm">
+                                        {profile?.created_at.toLocaleDateString()}
+                                    </p>
+                                </div>
                             </div>
                         </CardContent>
                     </Card>

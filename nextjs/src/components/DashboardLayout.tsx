@@ -21,7 +21,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const router = useRouter();
 
 
-    const { user } = useGlobal();
+    const { profile } = useGlobal();
 
     const handleLogout = async () => {
         try {
@@ -119,10 +119,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         >
                             <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center">
                                 <span className="text-primary-700 font-medium">
-                                    {user ? getInitials(user.email) : '??'}
+                                    {profile ? getInitials(profile.email) : '??'}
                                 </span>
                             </div>
-                            <span>{user?.email || 'Loading...'}</span>
+                            <span>{profile?.email || 'Loading...'}</span>
                             <ChevronDown className="h-4 w-4"/>
                         </button>
 
@@ -131,7 +131,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                                 <div className="p-2 border-b border-gray-100">
                                     <p className="text-xs text-gray-500">Signed in as</p>
                                     <p className="text-sm font-medium text-gray-900 truncate">
-                                        {user?.email}
+                                        {profile?.email}
                                     </p>
                                 </div>
                                 <div className="py-1">

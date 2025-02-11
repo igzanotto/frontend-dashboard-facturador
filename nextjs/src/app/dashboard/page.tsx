@@ -6,12 +6,12 @@ import { CalendarDays, Settings, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 export default function DashboardContent() {
-    const { loading, user } = useGlobal();
+    const { loading, profile } = useGlobal();
 
     const getDaysSinceRegistration = () => {
-        if (!user?.registered_at) return 0;
+        if (!profile?.created_at) return 0;
         const today = new Date();
-        const diffTime = Math.abs(today.getTime() - user.registered_at.getTime());
+        const diffTime = Math.abs(today.getTime() - profile.created_at.getTime());
         return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     };
 
@@ -29,7 +29,7 @@ export default function DashboardContent() {
         <div className="space-y-6 p-6">
             <Card>
                 <CardHeader>
-                    <CardTitle>Welcome, {user?.email?.split('@')[0]}! 👋</CardTitle>
+                    <CardTitle>Welcome, {profile?.first_name} {profile?.last_name}! 👋</CardTitle>
                     <CardDescription className="flex items-center gap-2">
                         <CalendarDays className="h-4 w-4" />
                         Member for {daysSinceRegistration} days
