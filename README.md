@@ -187,3 +187,5 @@ My socials:
 - [Supabase](https://supabase.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
+
+alo
